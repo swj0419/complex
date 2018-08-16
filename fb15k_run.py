@@ -26,10 +26,10 @@ if __name__ =="__main__":
 	#Here each model is identified by its name, i.e. the string of its class name in models.py
 	#Parameters given here are the best ones for each model, validated from the grid-search described in the paper
 	# all_params = { "Complex_Logistic_Model" : params } ; emb_size = 200; lmbda =0.01
-	#all_params = { "DistMult_Logistic_Model" : params } ; emb_size = 200; lmbda =0.01
+	all_params = { "DistMult_Logistic_Model" : params } ; emb_size = 200; lmbda =0.01
 	#all_params = { "CP_Logistic_Model" : params } ; emb_size = 150; lmbda =0.03
 	#all_params = { "Rescal_Logistic_Model" : params } ; emb_size = 150; lmbda =0.3
-	all_params = { "TransE_L2_Model" : params } ; emb_size = 100; lmbda =2.0 ; params.neg_ratio=1; params.learning_rate=0.01
+	# all_params = { "TransE_L2_Model" : params } ; emb_size = 100; lmbda =2.0 ; params.neg_ratio=1; params.learning_rate=0.01
 
 
 
@@ -57,14 +57,14 @@ if __name__ =="__main__":
 	# 		{'entities_real' : e1, 'relations_real' : r1, 'entities_imag' : e2, 'relations_imag' : r2  })
 
 	# transE2
-	e = fb15kexp.models["TransE_L2_Model"][0].e.get_value(borrow=True)
-	r = fb15kexp.models["TransE_L2_Model"][0].r.get_value(borrow=True)
-	scipy.io.savemat('TransE_L2_Model2_pb.mat', \
-					 {'entities': e, 'relation': r})
+	# e = fb15kexp.models["TransE_L2_Model"][0].e.get_value(borrow=True)
+	# r = fb15kexp.models["TransE_L2_Model"][0].r.get_value(borrow=True)
+	# scipy.io.savemat('TransE_L2_Model2_pb.mat', \
+	# 				 {'entities': e, 'relation': r})
 
 	#Dismult
-	# e = fb15kexp.models["DistMult_Logistic_Model"][0].e.get_value(borrow=True)
-	# r = fb15kexp.models["DistMult_Logistic_Model"][0].r.get_value(borrow=True)
-	# scipy.io.savemat('DistMult_Logistic_Model_pb2.mat', \
-	# 				 {'entities': e, 'relation': r})
+	e = fb15kexp.models["DistMult_Logistic_Model"][0].e.get_value(borrow=True)
+	r = fb15kexp.models["DistMult_Logistic_Model"][0].r.get_value(borrow=True)
+	scipy.io.savemat('DistMult_Logistic_Model_pb2.mat', \
+					 {'entities': e, 'relation': r})
 
