@@ -16,7 +16,7 @@ if __name__ =="__main__":
 
 	#SGD hyper-parameters:
 	params = Parameters(learning_rate = 0.1,
-						max_iter = 500,
+						max_iter = 300,
 						batch_size = int(len(fb15kexp.train.values) / 100),  #Make 100 batches
 						neg_ratio = 10, 
 						valid_scores_every = 50,
