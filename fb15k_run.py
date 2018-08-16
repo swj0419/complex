@@ -11,7 +11,7 @@ import efe.tools as tools
 if __name__ =="__main__":
 
 	#Load data, ensure that data is at path: 'path'/'name'/[train|valid|test].txt
-	fb15kexp = build_data(name = 'fb15k',path = tools.cur_path + '/datasets/')
+	fb15kexp = build_data(name = 'ppi5k',path = tools.cur_path + '/datasets/')
 
 
 	#SGD hyper-parameters:
@@ -50,8 +50,14 @@ if __name__ =="__main__":
 
 	#Save ComplEx embeddings (last trained model, not best on grid search if multiple embedding sizes and lambdas)
 	#e1 = fb15kexp.models["Complex_Logistic_Model"][0].e1.get_value(borrow=True)
-	#e2 = fb15kexp.models["Complex_Logistic_Model"][0].e2.get_value(borrow=True)
+	# e2 = fb15kexp.models["Complex_Logistic_Model"][0].e2.get_value(borrow=True)
 	#r1 = fb15kexp.models["Complex_Logistic_Model"][0].r1.get_value(borrow=True)
 	#r2 = fb15kexp.models["Complex_Logistic_Model"][0].r2.get_value(borrow=True)
-	#scipy.io.savemat('complex_embeddings.mat', \
-	#		{'entities_real' : e1, 'relations_real' : r1, 'entities_imag' : e2, 'relations_imag' : r2  })
+	# scipy.io.savemat('complex_embeddings.mat', \
+	# 		{'entities_real' : e1, 'relations_real' : r1, 'entities_imag' : e2, 'relations_imag' : r2  })
+
+	# transE2
+	e = fb15kexp.models["TransE_L2_Model"][0].e.get_value(borrow=True)
+	r = fb15kexp.models["TransE_L2_Model"][0].r.get_value(borrow=True)
+	scipy.io.savemat('TransE_L2_Model2_pb.mat', \
+					 {'entities': e, 'relation': r})
