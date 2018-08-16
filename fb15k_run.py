@@ -1,7 +1,7 @@
 import logging
 logging.basicConfig()
 import downhill.base
-downhill.base.logging.setLevel(20)
+# downhill.base.logging.setLevel(20)
 #import scipy.io
 
 import efe
@@ -11,12 +11,12 @@ import efe.tools as tools
 if __name__ =="__main__":
 
 	#Load data, ensure that data is at path: 'path'/'name'/[train|valid|test].txt
-	fb15kexp = build_data(name = 'ppi5k',path = tools.cur_path + '/datasets/')
+	fb15kexp = build_data(name = 'ppi5k',path = tools.cur_path + '/datasets')
 
 
 	#SGD hyper-parameters:
-	params = Parameters(learning_rate = 0.5, 
-						max_iter = 1000, 
+	params = Parameters(learning_rate = 0.1,
+						max_iter = 500,
 						batch_size = int(len(fb15kexp.train.values) / 100),  #Make 100 batches
 						neg_ratio = 10, 
 						valid_scores_every = 50,
@@ -25,11 +25,11 @@ if __name__ =="__main__":
 
 	#Here each model is identified by its name, i.e. the string of its class name in models.py
 	#Parameters given here are the best ones for each model, validated from the grid-search described in the paper
-	all_params = { "Complex_Logistic_Model" : params } ; emb_size = 200; lmbda =0.01
+	# all_params = { "Complex_Logistic_Model" : params } ; emb_size = 200; lmbda =0.01
 	#all_params = { "DistMult_Logistic_Model" : params } ; emb_size = 200; lmbda =0.01
 	#all_params = { "CP_Logistic_Model" : params } ; emb_size = 150; lmbda =0.03
 	#all_params = { "Rescal_Logistic_Model" : params } ; emb_size = 150; lmbda =0.3
-	#all_params = { "TransE_L1_Model" : params } ; emb_size = 100; lmbda =2.0 ; params.neg_ratio=1; params.learning_rate=0.01
+	all_params = { "TransE_L2_Model" : params } ; emb_size = 100; lmbda =2.0 ; params.neg_ratio=1; params.learning_rate=0.01
 
 
 
