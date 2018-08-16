@@ -61,3 +61,10 @@ if __name__ =="__main__":
 	r = fb15kexp.models["TransE_L2_Model"][0].r.get_value(borrow=True)
 	scipy.io.savemat('TransE_L2_Model2_pb.mat', \
 					 {'entities': e, 'relation': r})
+
+	#Dismult
+	# e = fb15kexp.models["DistMult_Logistic_Model"][0].e.get_value(borrow=True)
+	# r = fb15kexp.models["DistMult_Logistic_Model"][0].r.get_value(borrow=True)
+	# scipy.io.savemat('DistMult_Logistic_Model_pb2.mat', \
+	# 				 {'entities': e, 'relation': r})
+
